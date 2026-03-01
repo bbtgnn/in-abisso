@@ -15,9 +15,16 @@
 </script>
 
 <script lang="ts">
-	import { DownloadIcon, FastForwardIcon, PauseIcon, PlayIcon, RefreshCwIcon, RewindIcon } from '@lucide/svelte';
-	import { page } from '$app/stores';
+	import {
+		DownloadIcon,
+		FastForwardIcon,
+		PauseIcon,
+		PlayIcon,
+		RefreshCwIcon,
+		RewindIcon
+	} from '@lucide/svelte';
 	import { resolve } from '$app/paths';
+	import { page } from '$app/stores';
 	import { NavigationHistory } from '$lib';
 	import Button from '$lib/components/ui/button/button.svelte';
 
@@ -27,7 +34,10 @@
 
 	function downloadFilename(): string {
 		const path = $page.url.pathname;
-		const segments = path.replace(/^\/images\/?/, '').split('/').filter(Boolean);
+		const segments = path
+			.replace(/^\/images\/?/, '')
+			.split('/')
+			.filter(Boolean);
 		return segments.length > 0 ? segments.join('-') : 'image';
 	}
 
@@ -36,7 +46,9 @@
 	}
 </script>
 
-<div class="relative flex h-dvh w-dvw items-center justify-center overflow-hidden">
+<div
+	class="relative flex h-dvh w-dvw items-center justify-center overflow-hidden stroke-primary text-primary"
+>
 	<div class="absolute top-2 left-2 z-10">
 		<NavigationHistory.BackButton variant="ghost" size="icon" href={resolve('/')} />
 	</div>
